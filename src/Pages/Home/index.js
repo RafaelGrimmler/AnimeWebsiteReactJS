@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Container, FirstBannerContainer, FirstBannerContent, StartButton } from './styles';
+import { Container, FirstBannerContainer, FirstBannerContent, StartButton, PullAnimationBar, Divtest } from './styles';
+
 
 function Home() {
 
@@ -16,13 +17,15 @@ function Home() {
 
   return (
       <Container>
-        <FirstBannerContainer>
+        <FirstBannerContainer clicked={clicked}>
           <FirstBannerContent clicked={clicked}>
+            <Divtest clicked={clicked}/>
             <h1>Catálogo de Animes</h1>
             <p>Faça listas com seus animes preferidos</p>
             <p>Descubra novos animes</p>
-            <StartButton onClick={handleclick}>Começar</StartButton>
+            <StartButton clicked={clicked} onClick={handleclick}>Começar</StartButton>
           </FirstBannerContent>
+          <PullAnimationBar/> 
         </FirstBannerContainer>
       </Container>
   );

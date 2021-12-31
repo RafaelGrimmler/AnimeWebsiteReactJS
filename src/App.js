@@ -7,14 +7,11 @@ import GlobalStyle from './Styles/styles'
 import Home from './Pages/Home'
 import Search from './Pages/Search'
 
-// Components
-import Header from './Components/Header'
 
 function App() {
   return (
     <Router>
       <GlobalStyle/>
-      <Header/>
 
       <Routes>
         <Route path="/" element={<Home/>} />
