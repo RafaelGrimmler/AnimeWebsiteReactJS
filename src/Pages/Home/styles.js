@@ -118,9 +118,6 @@ const AnimationTittleLightAlternate = keyframes`
   0% {
     filter: drop-shadow(0 0 5px #00fbff);
   }
-  33% {
-    filter: drop-shadow(0 0 5px #ff0080);
-  }
   66% {
     filter: drop-shadow(0 0 5px #5766eb);
   }

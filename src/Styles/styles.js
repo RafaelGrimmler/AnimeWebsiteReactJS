@@ -25,6 +25,7 @@ export default createGlobalStyle`
     }
     #root {
         --color-text-white: #FDFDFD;
+        --color-background-white: #FDFDFD;
     }
     
 `;

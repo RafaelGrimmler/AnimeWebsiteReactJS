@@ -12,7 +12,7 @@ function Home() {
 
   const handleclick = () => {
     setClicked(1)
-    window.setTimeout(()=>{navigate('pesquisar')}, 1200)
+    window.setTimeout(()=>{navigate('Animes')}, 1200)
   }
 
   return (

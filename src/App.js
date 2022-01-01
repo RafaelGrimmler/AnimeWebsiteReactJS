@@ -7,7 +7,6 @@ import GlobalStyle from './Styles/styles'
 import Home from './Pages/Home'
 import Search from './Pages/Search'
 
-
 function App() {
   return (
     <Router>
@@ -15,7 +14,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/pesquisar" element={<Search/>} />
+        <Route path="/Animes" element={<Search/>} />
       </Routes>
     </Router>
   );
