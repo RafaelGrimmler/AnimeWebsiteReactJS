@@ -8,7 +8,7 @@ import Header from '../../Components/Header'
 function Search() {
   return (
       <Container>
-          <Header/>
+          <Header btnEffect={'Animes'}/>
       </Container>
   );
 }

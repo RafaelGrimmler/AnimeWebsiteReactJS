@@ -7,7 +7,7 @@ export const Container = styled.div`
     width: 100%;
     height: 60px;
     z-index: 98;
-    background-color: var(--color-background-white);
+    background-color: var(--color-lightmode-background-white);
     border-bottom: 1px solid var(--color-lightmode-border);
     position: fixed;
     display: flex;
@@ -33,6 +33,7 @@ export const LogoContainer = styled.div`
         transform-style: preserve-3d;
         transform: perspective(9px) rotateX(2deg);
         filter: drop-shadow(0 2px 1px #3d3d3d);
+
     }
 `;
 
@@ -101,7 +102,7 @@ export const SearchContainer = styled.div`
 
 export const ButtonsContainer = styled.div`
     width: 380px;
-    height: 35px;
+    height: 100%;
     margin-right: 50px;
     display: flex;
     justify-content: center;
@@ -111,20 +112,39 @@ export const ButtonsContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100%;
     }
 
     & ul li {
         margin-right: 30px;
         cursor: pointer;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     & ul li:nth-child(5) {
         margin-right: 0px;
     }
+`;
 
-    & span {
-        color: #303030;
-        font-weight: bold;
+export const ButtonsSpan = styled.span`
+    font-weight: bold;
+    color: ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : 'var(--color-lightmode-header-text)'};
+    transition: ${props=>props.animation === 1 ? '0.3s' : '0.7s'};
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : 'var(--color-lightmode-background-white)'};
+    border-top: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : 'var(--color-lightmode-background-white)'};
+
+    &:hover {
+        color: var(--color-universal-header-text-animation);
+        border-radius: ${props=>props.animation === 1 ? '50%' : '0%'};
+        border-bottom-color: var(--color-universal-header-text-animation);
+        border-top-color: var(--color-universal-header-text-animation);
     }
 `;
 

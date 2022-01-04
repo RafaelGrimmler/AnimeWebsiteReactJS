@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Container, LogoContainer, SearchContainer, ButtonsContainer, SearchGlass, ModeNight, ModeLight, NightModeContainer} from './styles';
+import { Container, LogoContainer, SearchContainer, ButtonsContainer, SearchGlass, ModeNight, ModeLight, NightModeContainer, ButtonsSpan} from './styles';
 
-function Header() {
+function Header({btnEffect}) {
 
   const navigator = useNavigate()
-
+  
   return (
       <Container>
         <LogoContainer onClick={()=>navigator('/')}>
@@ -22,10 +22,10 @@ function Header() {
         </SearchContainer>
         <ButtonsContainer>
           <ul>
-            <li><span>Início</span></li>
-            <li><span>Animes</span></li>
-            <li><span>Gêneros</span></li>
-            <li><span>Minha Lista</span></li>
+            <li><ButtonsSpan onClick={()=>navigator('/')}>Início</ButtonsSpan></li>
+            <li><ButtonsSpan onClick={()=>navigator('/Animes')} animation={btnEffect === 'Animes' ? 1 : 0}>Animes</ButtonsSpan></li>
+            <li><ButtonsSpan onClick={()=>navigator('/')} animation={btnEffect === 'Generos' ? 1 : 0}>Gêneros</ButtonsSpan></li>
+            <li><ButtonsSpan onClick={()=>navigator('/')} animation={btnEffect === 'Minhalista' ? 1 : 0}>Minha Lista</ButtonsSpan></li>
             <li>
               <NightModeContainer>
                 <ModeNight pos={'absolute'}/>
