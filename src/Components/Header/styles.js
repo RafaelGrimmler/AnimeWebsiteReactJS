@@ -8,7 +8,7 @@ export const Container = styled.div`
     height: 60px;
     z-index: 98;
     background-color: var(--color-background-white);
-    border-bottom: 2px solid #777778;
+    border-bottom: 1px solid var(--color-lightmode-border);
     position: fixed;
     display: flex;
     align-items: center;
@@ -22,7 +22,6 @@ export const LogoContainer = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
-    border: 3px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +30,9 @@ export const LogoContainer = styled.div`
     & h1 {
         font-size: 25px;
         font-family: fantasy;
+        transform-style: preserve-3d;
+        transform: perspective(9px) rotateX(2deg);
+        filter: drop-shadow(0 2px 1px #3d3d3d);
     }
 `;
 
@@ -66,26 +68,34 @@ export const SearchContainer = styled.div`
     & input {
         height: 100%;
         width: 270px;
-        border: 1px solid black;
+        border: 1px solid var(--color-lightmode-border);
         border-right: none;
         font-size: 17px;
         padding-left: 7px;
         padding-right: 7px;
         border-bottom-left-radius: 7px;
         border-top-left-radius: 7px;
+        background-color: #E5E5E5;
+        transition: border-color 0.5s;
     }
 
     & button {
         width: 30px;
         height: 100%;
         position: absolute;
-        border: 1px solid black;
+        border: 1px solid var(--color-lightmode-border);
         border-left: none;
         cursor: pointer;
         border-bottom-right-radius: 7px;
         border-top-right-radius: 7px;
         padding-right: 3px;
         padding-top: 2px;
+        background-color: #E5E5E5;
+        transition: border-color 0.5s;
+    }
+
+    &:hover button, &:hover input {
+        border-color: #616161;
     }
 `;
 
@@ -105,10 +115,16 @@ export const ButtonsContainer = styled.div`
 
     & ul li {
         margin-right: 30px;
+        cursor: pointer;
     }
 
     & ul li:nth-child(5) {
         margin-right: 0px;
+    }
+
+    & span {
+        color: #303030;
+        font-weight: bold;
     }
 `;
 
