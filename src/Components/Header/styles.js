@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import { MdModeNight } from 'react-icons/md';
-import { BsSun } from 'react-icons/bs';
+import { BsSun, BsMoon } from 'react-icons/bs';
+import { keyframes } from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
     height: 60px;
     z-index: 98;
-    background-color: var(--color-lightmode-background-white);
+    background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)': 'var(--color-nightmode-background-cyan)'};
     border-bottom: 1px solid var(--color-lightmode-border);
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    transition: background-color 0.5s;
 `;
 
 export const LogoContainer = styled.div`
@@ -43,16 +45,31 @@ export const SearchGlass = styled(FaSearch)`
     color: black;
 `;
 
-export const ModeNight = styled(MdModeNight)`
-    font-size: 25px;
+export const LightModeAnimation = keyframes`
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+`;
+
+export const ModeNight = styled(BsMoon)`
+    font-size: 23px;
     color: black;
     position: ${props=>props.pos === 'absolute' ? 'absolute' : ''};
+    animation-name: ${LightModeAnimation};
+    animation-duration: 0.5s;
 `;
 
 export const ModeLight = styled(BsSun)`
     font-size: 25px;
-    color: black;
+    color: var(--color-nightmode-header-text);
     position: ${props=>props.pos === 'absolute' ? 'absolute' : ''};
+    animation-name: ${LightModeAnimation};
+    animation-duration: 0.5s;
 `;
 
 export const SearchContainer = styled.div`
@@ -131,14 +148,14 @@ export const ButtonsContainer = styled.div`
 
 export const ButtonsSpan = styled.span`
     font-weight: bold;
-    color: ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : 'var(--color-lightmode-header-text)'};
-    transition: ${props=>props.animation === 1 ? '0.3s' : '0.7s'};
+    color: ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : props.lightmode ?'var(--color-lightmode-header-text)' : 'var(--color-nightmode-header-text)'};
+    transition: ${props=>props.animation === 1 ? '0.3s' : '0.5s'};
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : 'var(--color-lightmode-background-white)'};
-    border-top: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : 'var(--color-lightmode-background-white)'};
+    border-bottom: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : props.lightmode ?'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-cyan)'};
+    border-top: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : props.lightmode ?'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-cyan)'};
 
     &:hover {
         color: var(--color-universal-header-text-animation);

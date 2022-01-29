@@ -7,16 +7,23 @@ import GlobalStyle from './Styles/styles'
 import Home from './Pages/Home'
 import Search from './Pages/Search'
 
+// Context
+import { LightModeProvider } from './Context/LightModeContext'
+
 function App() {
   return (
-    <Router>
-      <GlobalStyle/>
+    <LightModeProvider>
 
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/Animes" element={<Search/>} />
-      </Routes>
-    </Router>
+      <Router>
+        <GlobalStyle/>
+
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/Animes" element={<Search/>} />
+        </Routes>
+      </Router>
+
+    </LightModeProvider>
   );
 }
 

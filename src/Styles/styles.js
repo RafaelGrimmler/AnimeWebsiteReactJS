@@ -25,9 +25,14 @@ export default createGlobalStyle`
     }
     #root {
         --color-text-white: #FDFDFD;
+
         --color-lightmode-background-white: #FDFDFD;
         --color-lightmode-border: #d4d5d9;
         --color-lightmode-header-text: #303030;
+
+        --color-nightmode-background-cyan: #202124;
+        --color-nightmode-header-text: #cfd0d1;
+
         --color-universal-header-text-animation: #ff3068;
     }
     
