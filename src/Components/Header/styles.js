@@ -13,7 +13,6 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     transition: background-color 0.5s;
 `;
 
@@ -34,15 +33,23 @@ export const LogoContainer = styled.div`
         font-family: fantasy;
         transform-style: preserve-3d;
         transform: perspective(9px) rotateX(2deg);
-        filter: drop-shadow(0 2px 1px #3d3d3d);
 
+        filter: ${props => props.lightmode ? 'drop-shadow(0 2px 1px #3d3d3d)' : 'drop-shadow(0 2px 1px black)'};
+        color: ${props => props.lightmode ? 'black' : 'white'};
     }
+    
+    @media only screen and (max-width: 870px){
+            & {
+                margin-left: 2px;
+            }
+        }
 `;
 
 export const SearchGlass = styled(FaSearch)`
     width: 100%;
     height: 50%;
-    color: black;
+    color: ${props => props.lightmode ? 'black' : 'var(--color-nightmode-header-text)'};
+    transition: color 0.5s;
 `;
 
 export const LightModeAnimation = keyframes`
@@ -86,34 +93,66 @@ export const SearchContainer = styled.div`
     & input {
         height: 100%;
         width: 270px;
-        border: 1px solid var(--color-lightmode-border);
+        border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
         border-right: none;
         font-size: 17px;
         padding-left: 7px;
         padding-right: 7px;
         border-bottom-left-radius: 7px;
         border-top-left-radius: 7px;
-        background-color: #E5E5E5;
-        transition: border-color 0.5s;
+        background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
+        color: ${props => props.lightmode ? '#000' : '#FFF'};
+        transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+
+        &::-webkit-input-placeholder{
+            color: ${props => props.lightmode ? '#75797d' : '#cfd0d1'};
+            font-style: oblique;
+        }
+
+        @media only screen and (max-width: 1100px){
+            & {
+                width: 150px;
+            }
+        }
+
     }
 
     & button {
         width: 30px;
         height: 100%;
         position: absolute;
-        border: 1px solid var(--color-lightmode-border);
+        border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
         border-left: none;
         cursor: pointer;
         border-bottom-right-radius: 7px;
         border-top-right-radius: 7px;
         padding-right: 3px;
         padding-top: 2px;
-        background-color: #E5E5E5;
-        transition: border-color 0.5s;
+        background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
+        transition: border-color 0.5s, background-color 0.5s;
     }
 
     &:hover button, &:hover input {
         border-color: #616161;
+    }
+
+    @media only screen and (max-width: 1100px){
+            & {
+                width: 220px;
+            }
+        }
+
+    @media only screen and (max-width: 960px){
+            & {
+                width: 190px;
+                margin-left: 0;
+            }
+        }
+
+    @media only screen and (max-width: 470px){
+        & {
+            display: none;
+        }
     }
 `;
 
@@ -144,6 +183,12 @@ export const ButtonsContainer = styled.div`
     & ul li:nth-child(5) {
         margin-right: 0px;
     }
+
+    @media only screen and (max-width: 870px){
+            & {
+                display: none;
+            }
+        }
 `;
 
 export const ButtonsSpan = styled.span`
@@ -156,6 +201,7 @@ export const ButtonsSpan = styled.span`
     align-items: center;
     border-bottom: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : props.lightmode ?'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-cyan)'};
     border-top: 3px solid ${props=>props.animation === 1 ? 'var(--color-universal-header-text-animation)' : props.lightmode ?'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-cyan)'};
+    text-align: center;
 
     &:hover {
         color: var(--color-universal-header-text-animation);
@@ -170,6 +216,48 @@ export const NightModeContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+export const HamburgerMenu = styled.div`
+    height: 54px;
+    width: 54px;
+    margin-right: 2px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    cursor: pointer;
+
+
+    & div {
+        width: 100%;
+        height: 2px;
+        background-color: ${props=>props.lightmode ? 'black' : 'white'};
+        position: relative;
+    }
+
+    & div::after{
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: ${props=>props.lightmode ? 'black' : 'white'};
+        position: absolute;
+        top: 10px;
+    }
+
+    & div::before{
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: ${props=>props.lightmode ? 'black' : 'white'};
+        position: absolute;
+        top: -10px;
+    }
+
+    @media only screen and (max-width: 870px){
+            & {
+                display: flex;
+            }
+        }
 `;
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Container, LogoContainer, SearchContainer, ButtonsContainer, SearchGlass, ModeNight, ModeLight, NightModeContainer, ButtonsSpan} from './styles';
+import { Container, LogoContainer, SearchContainer, ButtonsContainer, SearchGlass, ModeNight, ModeLight, NightModeContainer, ButtonsSpan, HamburgerMenu} from './styles';
 
 // Context
 import { useLightMode } from '../../Context/LightModeContext'
@@ -18,14 +18,14 @@ function Header({btnEffect}) {
   
   return (
       <Container lightmode={LightMode.lightMode}>
-        <LogoContainer onClick={()=>navigator('/')}>
+        <LogoContainer lightmode={LightMode.lightMode} onClick={()=>navigator('/')}>
           <h1>DISCOVERNIME</h1>
         </LogoContainer>
-        <SearchContainer>
+        <SearchContainer lightmode={LightMode.lightMode}>
           <form action="">
             <input type="text" name='Anime' placeholder='Pesquisar animes...'/>
             <button type='submit'>
-              <SearchGlass/>
+              <SearchGlass lightmode={LightMode.lightMode}/>
             </button>
           </form>
         </SearchContainer>
@@ -42,6 +42,9 @@ function Header({btnEffect}) {
             </li>
           </ul>
         </ButtonsContainer>
+        <HamburgerMenu lightmode={LightMode.lightMode}>
+          <div/>
+        </HamburgerMenu>
       </Container>
   );
 }

@@ -32,6 +32,7 @@ export default createGlobalStyle`
 
         --color-nightmode-background-cyan: #202124;
         --color-nightmode-header-text: #cfd0d1;
+        --color-nightmode-border: #000;
 
         --color-universal-header-text-animation: #ff3068;
     }
