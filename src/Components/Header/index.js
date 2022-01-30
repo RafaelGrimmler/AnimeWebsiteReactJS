@@ -44,16 +44,42 @@ function Header({btnEffect}) {
             <li><ButtonsSpan lightmode={LightMode.lightMode} onClick={()=>navigator('/')} animation={btnEffect === 'Minhalista' ? 1 : 0}>Minha Lista</ButtonsSpan></li>
             <li>
               <NightModeContainer>
-                {LightMode.lightMode ? <ModeNight onClick={HandleLightModeFunctionality} pos={'absolute'}/> : <ModeLight onClick={HandleLightModeFunctionality} pos={'absolute'}/>}
+                {LightMode.lightMode ? <ModeNight onClick={HandleLightModeFunctionality} fonts={'23px'} pos={'absolute'}/> : <ModeLight onClick={HandleLightModeFunctionality} fonts={'25px'} pos={'absolute'}/>}
               </NightModeContainer>
             </li>
           </ul>
         </ButtonsContainer>
-        <HamburgerMenu onClick={HandleHamburguerMenu} >
-          <HamburgerX lightmode={LightMode.lightMode} menustatus={hamburguerController}/>
+        <HamburgerMenu >
+          <HamburgerX onClick={HandleHamburguerMenu} lightmode={LightMode.lightMode} menustatus={hamburguerController}>
+            <div/>
+          </HamburgerX>
           <HamburgerMenuInteractionBar menustatus={hamburguerController} lightmode={LightMode.lightMode}>
             <div>
-              
+              <form action="">
+                <input type="text" name='Anime' placeholder='Pesquisar animes...'/>
+                <button type='submit'>
+                  <SearchGlass lightmode={LightMode.lightMode}/>
+                </button>
+              </form>
+              <div>
+                <ul>
+                  <li>
+                    <span title='Início' onClick={()=>navigator('/')}>Início</span>
+                  </li>
+                  <li>
+                    <span title='Animes' onClick={()=>navigator('/Animes')}>Animes</span>
+                  </li>
+                  <li>
+                    <span title='Gêneros' onClick={()=>navigator('/')}>Gêneros</span>
+                  </li>
+                  <li>
+                    <span title='Minha Lista' onClick={()=>navigator('/')}>Minha Lista</span>
+                  </li>
+                  <li>
+                    {LightMode.lightMode ? <ModeNight title='Modo Escuro' fonts={'36px'} onClick={HandleLightModeFunctionality} pos={'absolute'}/> : <ModeLight title='Modo Claro' fonts={'36px'} onClick={HandleLightModeFunctionality} pos={'absolute'}/>}
+                  </li>
+                </ul>
+              </div>
             </div>
           </HamburgerMenuInteractionBar>
         </HamburgerMenu>

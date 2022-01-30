@@ -64,19 +64,21 @@ export const LightModeAnimation = keyframes`
 `;
 
 export const ModeNight = styled(BsMoon)`
-    font-size: 23px;
+    font-size: ${props=>props.fonts};
     color: black;
     position: ${props=>props.pos === 'absolute' ? 'absolute' : ''};
     animation-name: ${LightModeAnimation};
     animation-duration: 0.5s;
+    cursor: pointer;
 `;
 
 export const ModeLight = styled(BsSun)`
-    font-size: 25px;
+    font-size: ${props=>props.fonts};
     color: var(--color-nightmode-header-text);
     position: ${props=>props.pos === 'absolute' ? 'absolute' : ''};
     animation-name: ${LightModeAnimation};
     animation-duration: 0.5s;
+    cursor: pointer;
 `;
 
 export const SearchContainer = styled.div`
@@ -235,7 +237,13 @@ export const HamburgerMenu = styled.div`
 `;
 
 export const HamburgerX = styled.div`
-    & {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & div{
         width: ${props => props.menustatus ? '50%' : '70%'};
         height: 2px;
         background-color: ${props=>props.lightmode ? 'black' : 'white'};
@@ -244,7 +252,7 @@ export const HamburgerX = styled.div`
         transition: 0.5s;
     }
 
-    &::after{
+    & div::after{
         content: '';
         width: 100%;
         height: 2px;
@@ -254,7 +262,7 @@ export const HamburgerX = styled.div`
         transform: ${props => props.menustatus ? 'rotate(90deg)' : 'rotate(0deg)'};
     }
 
-    &::before{
+    & div::before{
         content: '';
         width: 100%;
         height: 2px;
@@ -275,10 +283,106 @@ export const HamburgerMenuInteractionBar = styled.div`
     top: 60px;
     display: ${props => props.menustatus ? 'flex' : 'none'};
     justify-content: center;
+    align-items: center;
+    cursor: auto;
 
     & div {
         width: 60%;
-        height: 100%;
+        height: 80%;
+
+        & form {
+            width: 100%;
+            height: 32px;
+            display: none;
+            position: relative;
+
+            & button {
+                position: absolute;
+                right: 0;
+                width: 10%;
+                height: 100%;
+                border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
+                border-left: none;
+                cursor: pointer;
+                border-bottom-right-radius: 7px;
+                border-top-right-radius: 7px;
+                padding-right: 3px;
+                padding-top: 2px;
+                background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
+                transition: border-color 0.5s, background-color 0.5s;
+            }
+
+            & input {
+                width: 100%;
+                height: 100%;
+                border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
+                border-right: none;
+                font-size: 17px;
+                padding-left: 7px;
+                padding-right: 7px;
+                border-bottom-left-radius: 7px;
+                border-top-left-radius: 7px;
+                border-bottom-right-radius: 7px;
+                border-top-right-radius: 7px;
+                background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
+                color: ${props => props.lightmode ? '#000' : '#FFF'};
+                transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+
+                &::-webkit-input-placeholder{
+                    color: ${props => props.lightmode ? '#75797d' : '#cfd0d1'};
+                    font-style: oblique;
+                }
+            }
+
+            @media only screen and (max-width: 470px){
+                & {
+                    display: flex;
+                }
+            }
+        }    
+
+        & div {
+            width: 100%;
+            height: 100%;
+
+            & ul {
+                width: 100%;
+                height: 100%;
+
+                & li {
+                    width: 100%;
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 25px;
+
+                    & span {
+                        padding-top: 7px;
+                        padding-bottom: 7px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        cursor: pointer;
+                        font-size: 19px;
+                        text-align: center;
+                        font-weight: bold;
+                        color: ${props => props.lightmode ? 'var(--color-lightmode-header-text)' : 'var(--color-nightmode-header-text)' };
+                        transition: .2s;
+                    }
+
+                    & span:hover {
+                        filter: drop-shadow(0 0 3px var(--color-universal-header-text-animation));
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 470px){
+                & {
+                    height: calc(100% - 32px - 20px);
+                    margin-top: 20px;
+                }
+            }
+        }
     }
 `;
 
