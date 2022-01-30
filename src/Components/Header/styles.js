@@ -8,7 +8,7 @@ export const Container = styled.div`
     height: 60px;
     z-index: 98;
     background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)': 'var(--color-nightmode-background-cyan)'};
-    border-bottom: 1px solid var(--color-lightmode-border);
+    border-bottom: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'black'};
     position: fixed;
     display: flex;
     align-items: center;
@@ -227,37 +227,59 @@ export const HamburgerMenu = styled.div`
     display: none;
     cursor: pointer;
 
+    @media only screen and (max-width: 870px){
+            & {
+                display: flex;
+            }
+        }
+`;
 
-    & div {
-        width: 100%;
+export const HamburgerX = styled.div`
+    & {
+        width: ${props => props.menustatus ? '50%' : '70%'};
         height: 2px;
         background-color: ${props=>props.lightmode ? 'black' : 'white'};
         position: relative;
+        transform: ${props => props.menustatus ? 'rotate(45deg)' : 'rotate(0deg)'};
+        transition: 0.5s;
     }
 
-    & div::after{
+    &::after{
         content: '';
         width: 100%;
         height: 2px;
         background-color: ${props=>props.lightmode ? 'black' : 'white'};
         position: absolute;
-        top: 10px;
+        top: ${props => props.menustatus ? '0px' : '10px'};
+        transform: ${props => props.menustatus ? 'rotate(90deg)' : 'rotate(0deg)'};
     }
 
-    & div::before{
+    &::before{
         content: '';
         width: 100%;
         height: 2px;
         background-color: ${props=>props.lightmode ? 'black' : 'white'};
         position: absolute;
         top: -10px;
+        opacity: ${props => props.menustatus ? 0 : 1};
     }
 
-    @media only screen and (max-width: 870px){
-            & {
-                display: flex;
-            }
-        }
+`;
+
+export const HamburgerMenuInteractionBar = styled.div`
+    width: 100%;
+    height: 350px;
+    background-color: ${props => props.lightmode ? 'rgba(207, 207, 207, 0.7)' : 'rgba(32, 33, 36, 0.7)'};
+    position: absolute;
+    left: 0;
+    top: 60px;
+    display: ${props => props.menustatus ? 'flex' : 'none'};
+    justify-content: center;
+
+    & div {
+        width: 60%;
+        height: 100%;
+    }
 `;
 
 

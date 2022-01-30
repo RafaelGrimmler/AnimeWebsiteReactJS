@@ -1,7 +1,8 @@
 import React from 'react';
+import { useState } from 'react/cjs/react.development';
 import { useNavigate } from 'react-router-dom';
 
-import { Container, LogoContainer, SearchContainer, ButtonsContainer, SearchGlass, ModeNight, ModeLight, NightModeContainer, ButtonsSpan, HamburgerMenu} from './styles';
+import { Container, LogoContainer, SearchContainer, ButtonsContainer, SearchGlass, ModeNight, ModeLight, NightModeContainer, ButtonsSpan, HamburgerMenu, HamburgerX, HamburgerMenuInteractionBar } from './styles';
 
 // Context
 import { useLightMode } from '../../Context/LightModeContext'
@@ -14,6 +15,12 @@ function Header({btnEffect}) {
 
   const HandleLightModeFunctionality = ()=>{
     LightMode.lightMode ? LightMode.setLightMode(false) : LightMode.setLightMode(true)
+  }
+
+  const [hamburguerController, setHamburguerController] = useState(false)
+
+  const HandleHamburguerMenu = () => {
+    hamburguerController ? setHamburguerController(false) : setHamburguerController(true)
   }
   
   return (
@@ -42,8 +49,13 @@ function Header({btnEffect}) {
             </li>
           </ul>
         </ButtonsContainer>
-        <HamburgerMenu lightmode={LightMode.lightMode}>
-          <div/>
+        <HamburgerMenu onClick={HandleHamburguerMenu} >
+          <HamburgerX lightmode={LightMode.lightMode} menustatus={hamburguerController}/>
+          <HamburgerMenuInteractionBar menustatus={hamburguerController} lightmode={LightMode.lightMode}>
+            <div>
+              
+            </div>
+          </HamburgerMenuInteractionBar>
         </HamburgerMenu>
       </Container>
   );
