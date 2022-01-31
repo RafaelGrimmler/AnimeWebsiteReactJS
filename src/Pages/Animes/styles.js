@@ -4,12 +4,12 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const HigherSubContainer = styled.div`
-  height: 60px;
+export const LowerSubContainer = styled.div`
+  height: 2000px;
   width: 100%;
+  background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-body-cyan)'};
 `;
 
-export const LowerSubContainer = styled.div`
-  height: 6000px;
-  width: 100%;
+export const MainPresentationContent = styled.main`
+
 `;

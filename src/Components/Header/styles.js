@@ -12,7 +12,7 @@ export const Container = styled.div`
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     transition: background-color 0.5s;
 `;
 
@@ -33,23 +33,36 @@ export const LogoContainer = styled.div`
         font-family: fantasy;
         transform-style: preserve-3d;
         transform: perspective(9px) rotateX(2deg);
+        transition: .5s;
 
         filter: ${props => props.lightmode ? 'drop-shadow(0 2px 1px #3d3d3d)' : 'drop-shadow(0 2px 1px black)'};
         color: ${props => props.lightmode ? 'black' : 'white'};
     }
     
+    & h1:hover {
+        color: var(--color-universal-header-text-animation);
+        filter: ${props => props.lightmode ? 'drop-shadow(0 2px 3px black)' : 'drop-shadow(0 2px 1px white)'};
+    }
+
     @media only screen and (max-width: 870px){
             & {
-                margin-left: 2px;
+                margin-left: 10px;
             }
         }
 `;
 
 export const SearchGlass = styled(FaSearch)`
     width: 100%;
-    height: 50%;
+    height: 100%;
+    font-size: 23px;
     color: ${props => props.lightmode ? 'black' : 'var(--color-nightmode-header-text)'};
     transition: color 0.5s;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-universal-header-text-animation);
+    }
 `;
 
 export const LightModeAnimation = keyframes`
@@ -66,102 +79,35 @@ export const LightModeAnimation = keyframes`
 export const ModeNight = styled(BsMoon)`
     font-size: ${props=>props.fonts};
     color: black;
-    position: ${props=>props.pos === 'absolute' ? 'absolute' : ''};
     animation-name: ${LightModeAnimation};
     animation-duration: 0.5s;
+    transition: color .5s, transform .5s;
     cursor: pointer;
+
+    &:hover {
+        color: var(--color-universal-header-text-animation);
+        transform: rotate(45deg);
+    }
 `;
 
 export const ModeLight = styled(BsSun)`
     font-size: ${props=>props.fonts};
     color: var(--color-nightmode-header-text);
-    position: ${props=>props.pos === 'absolute' ? 'absolute' : ''};
+    /* position: ${props=>props.pos === 'absolute' ? 'absolute' : ''}; */
     animation-name: ${LightModeAnimation};
     animation-duration: 0.5s;
+    transition: color .5s, transform 1s;
     cursor: pointer;
-`;
 
-export const SearchContainer = styled.div`
-    width: 300px;
-    height: 35px;
-    margin-left: 130px;
-
-    & form {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    & input {
-        height: 100%;
-        width: 270px;
-        border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
-        border-right: none;
-        font-size: 17px;
-        padding-left: 7px;
-        padding-right: 7px;
-        border-bottom-left-radius: 7px;
-        border-top-left-radius: 7px;
-        background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
-        color: ${props => props.lightmode ? '#000' : '#FFF'};
-        transition: border-color 0.5s, background-color 0.5s, color 0.5s;
-
-        &::-webkit-input-placeholder{
-            color: ${props => props.lightmode ? '#75797d' : '#cfd0d1'};
-            font-style: oblique;
-        }
-
-        @media only screen and (max-width: 1100px){
-            & {
-                width: 150px;
-            }
-        }
-
-    }
-
-    & button {
-        width: 30px;
-        height: 100%;
-        position: absolute;
-        border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
-        border-left: none;
-        cursor: pointer;
-        border-bottom-right-radius: 7px;
-        border-top-right-radius: 7px;
-        padding-right: 3px;
-        padding-top: 2px;
-        background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
-        transition: border-color 0.5s, background-color 0.5s;
-    }
-
-    &:hover button, &:hover input {
-        border-color: #616161;
-    }
-
-    @media only screen and (max-width: 1100px){
-            & {
-                width: 220px;
-            }
-        }
-
-    @media only screen and (max-width: 960px){
-            & {
-                width: 190px;
-                margin-left: 0;
-            }
-        }
-
-    @media only screen and (max-width: 470px){
-        & {
-            display: none;
-        }
+    &:hover {
+        color: var(--color-universal-header-text-animation);
+        transform: rotate(180deg);
     }
 `;
 
 export const ButtonsContainer = styled.div`
     width: 380px;
     height: 100%;
-    margin-right: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -213,6 +159,37 @@ export const ButtonsSpan = styled.span`
     }
 `;
 
+export const RightContainer = styled.div`
+    margin-right: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    & ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 100%;
+
+        & li {
+            height: 100%;
+        }
+
+        & li+li {
+            margin-left: 20px;
+        }
+    }
+
+    @media only screen and (max-width: 870px){
+        & {
+            display: none;
+        }
+    }
+`;
+
 export const NightModeContainer = styled.div`
     position: relative;
     display: flex;
@@ -223,7 +200,7 @@ export const NightModeContainer = styled.div`
 export const HamburgerMenu = styled.div`
     height: 54px;
     width: 54px;
-    margin-right: 2px;
+    margin-right: 10px;
     justify-content: center;
     align-items: center;
     display: none;
@@ -260,6 +237,7 @@ export const HamburgerX = styled.div`
         position: absolute;
         top: ${props => props.menustatus ? '0px' : '10px'};
         transform: ${props => props.menustatus ? 'rotate(90deg)' : 'rotate(0deg)'};
+        transition: 0.5s;
     }
 
     & div::before{
@@ -270,6 +248,7 @@ export const HamburgerX = styled.div`
         position: absolute;
         top: -10px;
         opacity: ${props => props.menustatus ? 0 : 1};
+        transition: 0.5s;
     }
 
 `;
@@ -288,58 +267,7 @@ export const HamburgerMenuInteractionBar = styled.div`
 
     & div {
         width: 60%;
-        height: 80%;
-
-        & form {
-            width: 100%;
-            height: 32px;
-            display: none;
-            position: relative;
-
-            & button {
-                position: absolute;
-                right: 0;
-                width: 10%;
-                height: 100%;
-                border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
-                border-left: none;
-                cursor: pointer;
-                border-bottom-right-radius: 7px;
-                border-top-right-radius: 7px;
-                padding-right: 3px;
-                padding-top: 2px;
-                background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
-                transition: border-color 0.5s, background-color 0.5s;
-            }
-
-            & input {
-                width: 100%;
-                height: 100%;
-                border: 1px solid ${props => props.lightmode ? 'var(--color-lightmode-border)' : 'var(--color-nightmode-border)'};
-                border-right: none;
-                font-size: 17px;
-                padding-left: 7px;
-                padding-right: 7px;
-                border-bottom-left-radius: 7px;
-                border-top-left-radius: 7px;
-                border-bottom-right-radius: 7px;
-                border-top-right-radius: 7px;
-                background-color: ${props => props.lightmode ? '#E5E5E5' : '#464649'};
-                color: ${props => props.lightmode ? '#000' : '#FFF'};
-                transition: border-color 0.5s, background-color 0.5s, color 0.5s;
-
-                &::-webkit-input-placeholder{
-                    color: ${props => props.lightmode ? '#75797d' : '#cfd0d1'};
-                    font-style: oblique;
-                }
-            }
-
-            @media only screen and (max-width: 470px){
-                & {
-                    display: flex;
-                }
-            }
-        }    
+        height: 80%;  
 
         & div {
             width: 100%;
@@ -351,7 +279,7 @@ export const HamburgerMenuInteractionBar = styled.div`
 
                 & li {
                     width: 100%;
-                    height: 20%;
+                    height: 16%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -373,13 +301,6 @@ export const HamburgerMenuInteractionBar = styled.div`
                     & span:hover {
                         filter: drop-shadow(0 0 3px var(--color-universal-header-text-animation));
                     }
-                }
-            }
-
-            @media only screen and (max-width: 470px){
-                & {
-                    height: calc(100% - 32px - 20px);
-                    margin-top: 20px;
                 }
             }
         }

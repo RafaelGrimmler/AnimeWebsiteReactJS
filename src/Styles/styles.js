@@ -27,10 +27,11 @@ export default createGlobalStyle`
         --color-text-white: #FDFDFD;
 
         --color-lightmode-background-white: #FDFDFD;
-        --color-lightmode-border: #d4d5d9;
+        --color-lightmode-border: #bebfc2;
         --color-lightmode-header-text: #303030;
 
         --color-nightmode-background-cyan: #202124;
+        --color-nightmode-background-body-cyan: #363638;
         --color-nightmode-header-text: #cfd0d1;
         --color-nightmode-border: #000;
 
