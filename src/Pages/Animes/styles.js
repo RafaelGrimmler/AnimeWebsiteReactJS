@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 100%;
 `;
 
@@ -11,5 +11,19 @@ export const LowerSubContainer = styled.div`
 `;
 
 export const MainPresentationContent = styled.main`
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  margin-top: 60px;
 
+  & img {
+    width: 100%;
+    height: 100%;
+
+    @media only screen and (max-width: 1500px){
+      & {
+          margin-left: 10px;
+      }
+    }
+  }
 `;

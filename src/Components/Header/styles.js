@@ -14,6 +14,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-around;
     transition: background-color 0.5s;
+    top: 0;
 `;
 
 export const LogoContainer = styled.div`
