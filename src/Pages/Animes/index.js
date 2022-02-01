@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react/cjs/react.development';
+import Narutolarge from '../../Images/Animes/Narutolarge.jpg'
+import Narutooriginal from '../../Images/Animes/Narutooriginal.jpg'
 
 import { Container, LowerSubContainer, MainPresentationContent } from './styles';
 
@@ -11,7 +13,8 @@ import { useLightMode } from '../../Context/LightModeContext'
 
 const API = 'https://kitsu.io/api/edge/'
 
-function Search() {
+
+function Animes() {
 
   const LightMode = useLightMode()
 
@@ -25,7 +28,7 @@ function Search() {
       .then((response) => {
         setMainAnime(response.data)
       })
-
+      
     fetch(`${API}anime?page[limit]=20&page[offset]=${offset}`)
     .then((response) => response.json())
     .then((response) => {
@@ -33,19 +36,22 @@ function Search() {
     })
   }, [offset])
 
-  // mainAnime ? mainAnime[0].attributes.coverImage.large : ''
-
   return (
     <Container>
       <Header btnEffect={'Animes'}/>
       <LowerSubContainer lightmode={LightMode.lightMode}>
         {offset === 0 ? 
-          <MainPresentationContent >
-            <img src={mainAnime ? mainAnime[0].attributes.coverImage.large : ''} alt="Estampa do Anime em destaque" />
+          <MainPresentationContent lightmode={LightMode.lightMode}>
+            <img src={Narutolarge} alt="" />
+            <img src={Narutooriginal} alt="" />
+            <div />
+            <div>
+              <h1>{mainAnime ? mainAnime[0].attributes.canonicalTitle : ''}</h1>
+            </div>
           </MainPresentationContent> : ''}
       </LowerSubContainer>
     </Container>
   );
 }
 
-export default Search;
+export default Animes;
