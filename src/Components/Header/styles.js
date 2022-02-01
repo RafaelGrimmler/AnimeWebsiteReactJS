@@ -257,7 +257,7 @@ export const HamburgerX = styled.div`
 export const HamburgerMenuInteractionBar = styled.div`
     width: 100%;
     height: 350px;
-    background-color: ${props => props.lightmode ? 'rgba(207, 207, 207, 0.7)' : 'rgba(32, 33, 36, 0.7)'};
+    background-color: ${props => props.lightmode ? 'rgba(207, 207, 207, 0.94)' : 'rgba(32, 33, 36, 0.97)'};
     position: absolute;
     left: 0;
     top: 60px;

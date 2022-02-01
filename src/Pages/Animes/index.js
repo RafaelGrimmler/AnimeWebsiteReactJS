@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react/cjs/react.development';
 import Narutolarge from '../../Images/Animes/Narutolarge.jpg'
 import Narutooriginal from '../../Images/Animes/Narutooriginal.jpg'
 
-import { Container, LowerSubContainer, MainPresentationContent } from './styles';
+import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon } from './styles';
 
 // components
 import Header from '../../Components/Header'
@@ -36,6 +36,8 @@ function Animes() {
     })
   }, [offset])
 
+  console.log(mainAnime)
+
   return (
     <Container>
       <Header btnEffect={'Animes'}/>
@@ -47,6 +49,29 @@ function Animes() {
             <div />
             <div>
               <h1>{mainAnime ? mainAnime[0].attributes.canonicalTitle : ''}</h1>
+              <div>
+                <ul>
+                  <li>{mainAnime ? 
+                    <div>
+                      <span>Lançamento: {mainAnime[0].attributes.startDate}</span>
+                    </div> : ''}
+                  </li>
+                  <li>{mainAnime ? 
+                    <div>
+                      <GraphIcon lightmode={LightMode.lightMode}/>
+                      <span>{Math.round(parseFloat(mainAnime[0].attributes.averageRating)) + '%'}</span>
+                    </div> : ''}
+                  </li>
+                  <li>{mainAnime ? 
+                    <div>
+                      {mainAnime[0].attributes.status === 'finished' ? 
+                      <StatusDownIcon lightmode={LightMode.lightMode}/> : 
+                      <StatusUpIcon lightmode={LightMode.lightMode}/> }
+                      <span>{mainAnime[0].attributes.status === 'finished' ? 'Completo' : 'Em Andamento'}</span>
+                    </div> : ''}
+                  </li>
+                </ul>
+              </div>
             </div>
           </MainPresentationContent> : ''}
       </LowerSubContainer>
