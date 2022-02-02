@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react/cjs/react.development';
 import Narutolarge from '../../Images/Animes/Narutolarge.jpg'
 import Narutooriginal from '../../Images/Animes/Narutooriginal.jpg'
 
-import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon } from './styles';
+import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon, AddIcon, AnimeList } from './styles';
 
 // components
 import Header from '../../Components/Header'
@@ -59,7 +59,7 @@ function Animes() {
                   <li>{mainAnime ? 
                     <div>
                       <GraphIcon lightmode={LightMode.lightMode}/>
-                      <span>{Math.round(parseFloat(mainAnime[0].attributes.averageRating)) + '%'}</span>
+                      <span>{(Math.round(parseFloat(mainAnime[0].attributes.averageRating))/10).toFixed(1) }</span>
                     </div> : ''}
                   </li>
                   <li>{mainAnime ? 
@@ -71,9 +71,35 @@ function Animes() {
                     </div> : ''}
                   </li>
                 </ul>
+                <ul>
+                  <li>{mainAnime ? 
+                    <div>
+                      <DetailsIcon lightmode={LightMode.lightMode}/>
+                      <span>Detalhes</span>
+                    </div>
+                    : ''}
+                  </li>
+                  <li>{mainAnime ? 
+                    <div>
+                      <AddIcon lightmode={LightMode.lightMode}/>
+                      <span>Adicionar à lista</span>
+                    </div>
+                    : ''}
+                  </li>
+                </ul>
               </div>
             </div>
-          </MainPresentationContent> : ''}
+          </MainPresentationContent>
+           : ''}
+        <AnimeList conditional={offset}>
+          <div>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </AnimeList>
       </LowerSubContainer>
     </Container>
   );

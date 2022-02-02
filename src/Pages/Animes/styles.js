@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-import { VscGraphLine } from 'react-icons/vsc'
+import { AiOutlineStar } from 'react-icons/ai'
 import { MdOutlineDangerous } from 'react-icons/md'
 import { GiConfirmed } from 'react-icons/gi'
 import { CgDetailsMore } from 'react-icons/cg'
+import { IoMdAddCircleOutline } from 'react-icons/io'
 
 export const Container = styled.section`
   width: 100%;
@@ -15,28 +16,36 @@ export const LowerSubContainer = styled.div`
   background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-body-cyan)'};
 `;
 
-export const GraphIcon = styled(VscGraphLine)`
-  font-size: 22px;
+export const GraphIcon = styled(AiOutlineStar)`
+  font-size: 24px;
   color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px white)' : 'drop-shadow(0 0 1px black)'};
 `;
 
 export const StatusUpIcon = styled(MdOutlineDangerous)`
   font-size: 22px;
   color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px white)' : 'drop-shadow(0 0 1px black)'};
 `;
 
 export const StatusDownIcon = styled(GiConfirmed)`
   font-size: 22px;
   color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px white)' : 'drop-shadow(0 0 1px black)'};
 `;
 
 export const DetailsIcon = styled(CgDetailsMore)`
-  font-size: 22px;
+  font-size: 33px;
   color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px white)' : 'drop-shadow(0 0 1px black)'};
+  transition: .5s;
+`;
+
+export const AddIcon = styled(IoMdAddCircleOutline)`
+  font-size: 28px;
+  color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
+  filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px white)' : 'drop-shadow(0 0 1px black)'};
+  transition: .5s;
 `;
 
 export const MainPresentationContent = styled.main`
@@ -96,20 +105,27 @@ export const MainPresentationContent = styled.main`
     width: 500px;
     height: 50%;
     position: absolute;
-    top: 30%;
+    top: 25%;
     text-align: center;
+
+    @media only screen and (max-width: 680px){
+      & {
+       top: 10%;
+      }
+    }
 
     & h1 {
       font-size: 40px;
       color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-      filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+      filter: ${props => props.lightmode ? 'drop-shadow(0 1px 1px white)' : 'drop-shadow(0 0 1px black)'};
+      text-shadow: ${props => props.lightmode ? '0 -1px 1px white' : 'none'};
       margin-bottom: 40px;
     }
 
     & div:nth-child(2){
       width: 100%;
 
-      & ul {
+      & ul:nth-child(1) {
         width: 100%;
         height: 100%;
         display: flex; 
@@ -124,7 +140,8 @@ export const MainPresentationContent = styled.main`
           & span {
             font-size: 17px;
             color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-            filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+            filter: ${props => props.lightmode ? 'drop-shadow(0 1px 1px white)' : 'drop-shadow(0 0 1px black)'};
+            text-shadow: ${props => props.lightmode ? '0 -1px 1px white' : 'none'};
           }
 
           @media only screen and (max-width: 680px){
@@ -144,7 +161,8 @@ export const MainPresentationContent = styled.main`
             font-size: 18px;
             font-weight: bold;
             color: var(--color-universal-header-text-animation);
-            filter: drop-shadow(0 0 1px black);
+            filter: ${props => props.lightmode ? 'drop-shadow(0 1px 1px white)' : 'drop-shadow(0 0 1px black)'};
+            text-shadow: ${props => props.lightmode ? '0 -1px 1px white' : 'none'};
           }
 
           @media only screen and (max-width: 680px){
@@ -164,7 +182,8 @@ export const MainPresentationContent = styled.main`
             margin-left: 10px;
             font-size: 20px;
             color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
-            filter: ${props => props.lightmode ? 'drop-shadow(0 0 1px #adadad)' : 'drop-shadow(0 0 1px black)'};
+            filter: ${props => props.lightmode ? 'drop-shadow(0 1px 1px white)' : 'drop-shadow(0 0 1px black)'};
+            text-shadow: ${props => props.lightmode ? '0 -1px 1px white' : 'none'};
           }
           
           @media only screen and (max-width: 680px){
@@ -180,6 +199,88 @@ export const MainPresentationContent = styled.main`
           }
         }
       }
+
+      & ul:nth-child(2) {
+        margin-top: 25px;
+        width: 100%;
+        height: 100%;
+        display: flex; 
+        align-items: center;
+        justify-content: space-between;
+
+        @media only screen and (max-width: 680px){
+          & {
+            margin-top: 0;
+            display: block;
+          }
+        }
+  
+        & li:nth-child(1) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          & div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .5s;
+
+            & span {
+              margin-left: 10px;
+              font-size: 22px;
+              color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
+              filter: ${props => props.lightmode ? 'drop-shadow(0 1px 0 white)' : 'drop-shadow(0 0 1px black)'};text-shadow: ${props => props.lightmode ? '0 -1px 1px white' : 'none'};
+              transition: .5s;
+            }
+
+            &:hover ${DetailsIcon}, &:hover span{
+              color: var(--color-universal-header-text-animation);
+            }
+
+            &:hover {
+              transform: scale(1.12);
+            }
+          }
+
+          @media only screen and (max-width: 680px){
+            & {
+              margin-bottom: 20px;
+            }
+          }
+        }
+
+        & li:nth-child(2) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          & div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .5s;
+
+            & span {
+              margin-left: 10px;
+              font-size: 22px;
+              color: ${props => props.lightmode ? 'black' : '#f0f0f0'};
+              filter: ${props => props.lightmode ? 'drop-shadow(0 1px 0 white)' : 'drop-shadow(0 0 1px black)'};text-shadow: ${props => props.lightmode ? '0 -1px 1px white' : 'none'};
+              transition: .5s;
+            }
+
+            &:hover ${AddIcon}, &:hover span{
+              color: var(--color-universal-header-text-animation);
+            }
+
+            &:hover {
+              transform: scale(1.12);
+            }
+          }
+        }
+      }
     }
 
     @media only screen and (max-width: 680px){
@@ -188,6 +289,29 @@ export const MainPresentationContent = styled.main`
       }
     }
   }
+`;
+
+export const AnimeList = styled.section`
+  width: 100%;
+  margin-top: ${props => props.conditional ? '60px' : '-100px'};
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & div:nth-child(1) {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+    justify-items: center;
 
 
+    & div {
+      width: 300px;
+      height: 400px;
+      background-color: blue;
+    }
+  }
 `;
