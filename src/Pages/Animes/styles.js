@@ -5,13 +5,13 @@ import { MdOutlineDangerous } from 'react-icons/md'
 import { GiConfirmed } from 'react-icons/gi'
 import { CgDetailsMore } from 'react-icons/cg'
 import { IoMdAddCircleOutline } from 'react-icons/io'
+import { keyframes } from 'styled-components';
 
 export const Container = styled.section`
   width: 100%;
 `;
 
 export const LowerSubContainer = styled.div`
-  height: 2000px;
   width: 100%;
   background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-body-cyan)'};
 `;
@@ -291,27 +291,62 @@ export const MainPresentationContent = styled.main`
   }
 `;
 
+const LoadingContentAnimation = keyframes`
+  0%{
+    transform: rotate(0deg) scale(0.8);
+  }
+  50%{
+    transform: rotate(180deg) scale(1.2);
+  }
+  100%{
+    transform: rotate(360deg) scale(0.8);
+  }
+`;
+
+export const LoadingContent = styled.section`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 6px solid black;
+  border-color: var(--color-universal-header-text-animation);
+  filter: drop-shadow(0 0 1px black);
+  border-left: none;
+  border-bottom: none;
+  position: absolute;
+  top: 40%;
+
+  animation: ${LoadingContentAnimation} 0.8s infinite;
+`;
+
 export const AnimeList = styled.section`
   width: 100%;
-  margin-top: ${props => props.conditional ? '60px' : '-100px'};
-  position: absolute;
+  margin-top: ${props => props.conditional ? '' : ''};
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  & div:nth-child(1) {
-    width: 75%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-column-gap: 40px;
-    grid-row-gap: 40px;
-    justify-items: center;
+  min-height: 100vh;
+  background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-body-cyan)'};
 
 
-    & div {
-      width: 300px;
-      height: 400px;
-      background-color: blue;
-    }
+  & ul {
+    width: 100%;
+    min-height: calc(100vh);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-body-cyan)'};
   }
+`;
+
+export const AnimeListWrapperContainer = styled.div`
+  width: 90%;
+  min-width: 200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+  justify-items: center;
+  margin-top: ${props => props.conditional ? '160px' : '-100px' };
+  margin-bottom: 100px;
 `;

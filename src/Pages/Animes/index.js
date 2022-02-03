@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react/cjs/react.development';
 import Narutolarge from '../../Images/Animes/Narutolarge.jpg'
 import Narutooriginal from '../../Images/Animes/Narutooriginal.jpg'
 
-import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon, AddIcon, AnimeList } from './styles';
+import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon, AddIcon, AnimeList, LoadingContent, AnimeListWrapperContainer } from './styles';
 
 // components
 import Header from '../../Components/Header'
+import AnimeCard from '../../Components/AnimeCard'
 
 // context
 import { useLightMode } from '../../Context/LightModeContext'
@@ -32,11 +33,11 @@ function Animes() {
     fetch(`${API}anime?page[limit]=20&page[offset]=${offset}`)
     .then((response) => response.json())
     .then((response) => {
-      setAnimes(response.data)
+      setAnimes(response)
     })
   }, [offset])
 
-  console.log(mainAnime)
+  console.log(animes)
 
   return (
     <Container>
@@ -47,6 +48,7 @@ function Animes() {
             <img src={Narutolarge} alt="" />
             <img src={Narutooriginal} alt="" />
             <div />
+            {mainAnime ? 
             <div>
               <h1>{mainAnime ? mainAnime[0].attributes.canonicalTitle : ''}</h1>
               <div>
@@ -89,16 +91,21 @@ function Animes() {
                 </ul>
               </div>
             </div>
+            : <LoadingContent/>}
           </MainPresentationContent>
            : ''}
-        <AnimeList conditional={offset}>
-          <div>
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
+        <AnimeList conditional={offset} lightmode={LightMode.lightMode}>
+            {animes.data ? (
+              <ul>
+                <AnimeListWrapperContainer conditional={offset}>
+                {animes.data.map((anime) => (
+                  <li key={anime.id}>
+                    <AnimeCard anime={anime}/>
+                  </li>
+                ))}
+                </AnimeListWrapperContainer>
+              </ul>
+            ) : <LoadingContent/>}
         </AnimeList>
       </LowerSubContainer>
     </Container>
