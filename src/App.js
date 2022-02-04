@@ -6,6 +6,7 @@ import GlobalStyle from './Styles/styles'
 // Pages
 import Home from './Pages/Home'
 import Animes from './Pages/Animes'
+import Anime from './Pages/Anime'
 
 // Context
 import { LightModeProvider } from './Context/LightModeContext'
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/Animes" element={<Animes/>} />
+          <Route path="/Anime/id=:id" element={<Anime/>} />
         </Routes>
       </Router>
 

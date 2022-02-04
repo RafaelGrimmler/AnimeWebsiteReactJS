@@ -7,6 +7,7 @@ import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, Statu
 
 // components
 import Header from '../../Components/Header'
+import Footer from '../../Components/Footer'
 import AnimeCard from '../../Components/AnimeCard'
 
 // context
@@ -107,6 +108,7 @@ function Animes() {
               </ul>
             ) : <LoadingContent/>}
         </AnimeList>
+        <Footer/>
       </LowerSubContainer>
     </Container>
   );

@@ -1,11 +1,18 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import { Container, InfoBar, DopplerEffect, RatingStar, Incomplete, Complete } from './styles';
 
 
 function AnimeCard({ anime }) {
+
+  const navigator = useNavigate()
+
+  const URLonClick = '/Anime/id=' + anime.id
+
   return (
-      <Container>
+      <Container title={anime.attributes.canonicalTitle} onClick={()=>navigator(URLonClick)}>
         <img src={anime.attributes.posterImage.small} alt={anime.attributes.canonicalTitle} />
         <DopplerEffect />
         <InfoBar>

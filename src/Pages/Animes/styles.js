@@ -328,7 +328,6 @@ export const AnimeList = styled.section`
   min-height: 100vh;
   background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)' : 'var(--color-nightmode-background-body-cyan)'};
 
-
   & ul {
     width: 100%;
     min-height: calc(100vh);
