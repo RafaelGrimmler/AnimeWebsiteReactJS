@@ -4,7 +4,7 @@ import { BsSun, BsMoon } from 'react-icons/bs';
 import { keyframes } from 'styled-components';
 
 export const Container = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 60px;
     z-index: 98;
     background-color: ${props => props.lightmode ? 'var(--color-lightmode-background-white)': 'var(--color-nightmode-background-cyan)'};
