@@ -12,10 +12,21 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   height: 100%;
-  width: 40%;
+  width: 320px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  & ul {
+    width: 220px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    & li {
+      height: 100%;
+    }
+  }
 `;
 
 export const LeftArrow = styled(AiOutlineArrowLeft)`
@@ -35,14 +46,32 @@ export const RightArrow = styled(AiOutlineArrowRight)`
 export const Buttons = styled.div`
   width: 40px;
   height: 100%;
-  background-color: ${props => props.lightmode ? '#bebfc2' : 'var(--color-nightmode-background-cyan)'};
+  background-color: ${props => props.selected ? props.lightmode ? '#7d7d7d' : 'black' : props.lightmode ? '#bebfc2' : 'var(--color-nightmode-background-cyan)'};
   display: flex;
   align-items: center;
   border-radius: 10px;
   justify-content: center;
   cursor: pointer;
+  transition: .5s;
 
-  &:hover ${LeftArrow}, &:hover ${RightArrow} {
+  &:hover ${LeftArrow}, 
+  &:hover ${RightArrow},
+  &:hover span {
     color: var(--color-universal-header-text-animation);
+  }
+
+  &:hover {
+    background-color: ${props => props.lightmode ? '#7d7d7d' : 'black'};
+  }
+
+  & span {
+    font-size: 17px;
+    color: ${props => props.lightmode ? 'black' : '#F0F0F0'};
+    font-weight: bold;
+    filter: ${props => props.lightmode ? '' : 'drop-shadow(0 0 1px black)'};
+    transition: .5s;
+
+    color: ${props => props.selected ? 'var(--color-universal-header-text-animation)' : ''};
+    filter: ${props => props.selected ? 'drop-shadow(0 0 1px black)' : ''};
   }
 `;

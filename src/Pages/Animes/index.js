@@ -111,7 +111,7 @@ function Animes() {
               </ul>
             ) : <LoadingContent/>}
         </AnimeList>
-        <Pagination ofs={[offset, setOffset]}/>
+        {animes.data && <Pagination ofs={[offset, setOffset]} count={animes.meta.count}/>}
         <Footer/>
       </LowerSubContainer>
     </Container>
