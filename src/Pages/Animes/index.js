@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react/cjs/react.development';
+import { useNavigate } from 'react-router-dom';
 import Narutolarge from '../../Images/Animes/Narutolarge.jpg'
 import Narutooriginal from '../../Images/Animes/Narutooriginal.jpg'
 
@@ -9,6 +10,7 @@ import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, Statu
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import AnimeCard from '../../Components/AnimeCard'
+import Pagination from '../../Components/Pagination'
 
 // context
 import { useLightMode } from '../../Context/LightModeContext'
@@ -18,6 +20,7 @@ const API = 'https://kitsu.io/api/edge/'
 
 function Animes() {
 
+  const navigator = useNavigate()
   const LightMode = useLightMode()
 
   const [offset, setOffset] = useState(0)
@@ -76,7 +79,7 @@ function Animes() {
                 </ul>
                 <ul>
                   <li>{mainAnime ? 
-                    <div>
+                    <div onClick={()=>navigator('/Anime/id=' + mainAnime[0].id)}>
                       <DetailsIcon lightmode={LightMode.lightMode}/>
                       <span>Detalhes</span>
                     </div>
@@ -108,6 +111,7 @@ function Animes() {
               </ul>
             ) : <LoadingContent/>}
         </AnimeList>
+        <Pagination ofs={[offset, setOffset]}/>
         <Footer/>
       </LowerSubContainer>
     </Container>

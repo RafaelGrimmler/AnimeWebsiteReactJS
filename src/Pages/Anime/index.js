@@ -38,8 +38,6 @@ function Anime() {
         }
     }, [anime])
 
-    console.log(animeGenres)
-
     return (
       <Container>
             <Header/>
