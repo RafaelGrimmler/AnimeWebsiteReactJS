@@ -15,16 +15,35 @@ export const Wrapper = styled.div`
   width: 320px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+
+  @media only screen and (max-width: 425px){
+    & {
+      width: 245px;
+    }
+  }
 
   & ul {
     width: 220px;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin-right: 5px;
+    margin-left: 5px;
 
     & li {
       height: 100%;
+      margin-right: 2.5px;
+    }
+
+    & li:last-child {
+      margin-right: 0px;
+    }
+
+    @media only screen and (max-width: 425px){
+      & {
+        width: 170px;
+      }
     }
   }
 `;
@@ -54,6 +73,12 @@ export const Buttons = styled.div`
   cursor: pointer;
   transition: .5s;
 
+  @media only screen and (max-width: 425px){
+    & {
+      width: 32px;
+    }
+  }
+
   &:hover ${LeftArrow}, 
   &:hover ${RightArrow},
   &:hover span {
@@ -73,5 +98,11 @@ export const Buttons = styled.div`
 
     color: ${props => props.selected ? 'var(--color-universal-header-text-animation)' : ''};
     filter: ${props => props.selected ? 'drop-shadow(0 0 1px black)' : ''};
+
+    @media only screen and (max-width: 425px){
+      & {
+        font-size: 13px;
+      }
+    }
   }
 `;

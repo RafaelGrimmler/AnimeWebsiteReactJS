@@ -20,9 +20,9 @@ function Pagination({ofs, count}) {
   return (
       <Container>
           <Wrapper>
-              <Buttons lightmode={LightMode.lightMode}>
+              {current > 1 && <Buttons lightmode={LightMode.lightMode} onClick={() => setOffset(offset - 20)}>
                 <LeftArrow lightmode={LightMode.lightMode}/>
-              </Buttons>
+              </Buttons>}
               <ul>
                 {Array.from({ length: Math.min(5, pagesLength) })
                   .map((_ , index) => index + first)
@@ -35,9 +35,9 @@ function Pagination({ofs, count}) {
                   ))
                 }
               </ul>
-              <Buttons lightmode={LightMode.lightMode}>
+              {current < pagesLength && <Buttons lightmode={LightMode.lightMode} onClick={() => setOffset(offset + 20)}>
                 <RightArrow lightmode={LightMode.lightMode}/>
-              </Buttons>
+              </Buttons>}
           </Wrapper>
       </Container>
   );

@@ -40,7 +40,7 @@ function Anime() {
 
     return (
       <Container>
-            <Header/>
+            <Header btnEffect={'Animes'}/>
             <Body lightmode={LightMode.lightMode}>
                 {anime ? 
                 <AnimeBackground>

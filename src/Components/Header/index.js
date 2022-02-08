@@ -30,7 +30,7 @@ function Header({btnEffect}) {
           <ul>
             <li><ButtonsSpan title='Início' lightmode={LightMode.lightMode} onClick={()=>navigator('/')}>Início</ButtonsSpan></li>
             <li><ButtonsSpan title='Animes' lightmode={LightMode.lightMode}onClick={()=>navigator('/Animes')} animation={btnEffect === 'Animes' ? 1 : 0}>Animes</ButtonsSpan></li>
-            <li><ButtonsSpan title='Gêneros' lightmode={LightMode.lightMode} onClick={()=>navigator('/')} animation={btnEffect === 'Generos' ? 1 : 0}>Gêneros</ButtonsSpan></li>
+            <li><ButtonsSpan title='Gêneros' lightmode={LightMode.lightMode} onClick={()=>navigator('/Generos')} animation={btnEffect === 'Generos' ? 1 : 0}>Gêneros</ButtonsSpan></li>
             <li><ButtonsSpan title='Minha Lista' lightmode={LightMode.lightMode} onClick={()=>navigator('/')} animation={btnEffect === 'Minhalista' ? 1 : 0}>Minha Lista</ButtonsSpan></li>
           </ul>
         </ButtonsContainer>
@@ -64,7 +64,7 @@ function Header({btnEffect}) {
                     <span title='Animes' onClick={()=>navigator('/Animes')}>Animes</span>
                   </li>
                   <li>
-                    <span title='Gêneros' onClick={()=>navigator('/')}>Gêneros</span>
+                    <span title='Gêneros' onClick={()=>navigator('/Generos')}>Gêneros</span>
                   </li>
                   <li>
                     <span title='Minha Lista' onClick={()=>navigator('/')}>Minha Lista</span>
