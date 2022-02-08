@@ -4,7 +4,7 @@ import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
 export const Container = styled.div`
   width: 100%;
   height: 40px;
-  margin-bottom: 100px;
+  margin-bottom: ${props => props.mb ? props.mb : '100px'};
   display: flex;
   align-items: center;
   justify-content: center;

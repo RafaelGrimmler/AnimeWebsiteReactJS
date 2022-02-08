@@ -11,6 +11,7 @@ export const Body = styled.div`
     min-height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
+    transition: .5s;
 `;
 
 export const GenresContainer = styled.div`
@@ -21,13 +22,21 @@ export const GenresContainer = styled.div`
     & ul {
         width: 100%;
         height: 100%;
-        display: grid;grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
         grid-column-gap: 40px;
-        justify-items: center;
+        grid-row-gap: 10px;
+        justify-items: center; 
+        
+        @media only screen and (max-width: 375px){
+            & {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+        }
 
         & li {
-            height: 40%;
-            width: 100%;
+            height: 100%;
+            width: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,23 +44,11 @@ export const GenresContainer = styled.div`
             border-radius: 35px;
             background-color: var(--color-universal-header-text-animation);
             cursor: pointer;
-
-            @media only screen and (max-width: 1250px){
+            transition: .5s;
+            
+            @media only screen and (max-width: 600px){
                 & {
-                    height: 60%;
-                }
-            }
-
-            @media only screen and (max-width: 950px){
-                & {
-                    height: 80%;
-                }
-            }
-
-            @media only screen and (max-width: 768px){
-                & {
-                    height: 100%;
-                    grid-row-gap: 10px;
+                    width: 100%;
                 }
             }
 

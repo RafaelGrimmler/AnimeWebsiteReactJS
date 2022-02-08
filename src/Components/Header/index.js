@@ -38,7 +38,7 @@ function Header({btnEffect}) {
           <NightModeContainer>
             <ul>
               <li>
-                <SearchGlass title='Buscar' lightmode={LightMode.lightMode} onClick={()=>navigator('/')}/>
+                <SearchGlass title='Buscar' lightmode={LightMode.lightMode} onClick={()=>navigator('/Buscar')}/>
               </li>
               <li>
                 {LightMode.lightMode ? <ModeNight title='Modo Escuro' onClick={HandleLightModeFunctionality} fonts={'25px'} pos={'absolute'}/> : <ModeLight title='Modo Claro' onClick={HandleLightModeFunctionality} fonts={'25px'} pos={'absolute'}/>}
@@ -55,7 +55,7 @@ function Header({btnEffect}) {
               <div>
                 <ul>
                   <li>
-                    <span title='Buscar' onClick={()=>navigator('/')}>Buscar</span>
+                    <span title='Buscar' onClick={()=>navigator('/Buscar')}>Buscar</span>
                   </li>
                   <li>
                     <span title='Início' onClick={()=>navigator('/')}>Início</span>

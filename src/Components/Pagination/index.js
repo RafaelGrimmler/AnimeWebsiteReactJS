@@ -5,7 +5,7 @@ import { Container, Wrapper, Buttons, LeftArrow, RightArrow } from './styles';
 // context
 import { useLightMode } from '../../Context/LightModeContext'
 
-function Pagination({ofs, count}) {
+function Pagination({ofs, count, mb}) {
 
   const [offset, setOffset] = ofs
   const [current, setCurrent] = useState(Math.ceil(offset/20) + 1)
@@ -18,7 +18,7 @@ function Pagination({ofs, count}) {
   }, [offset])
 
   return (
-      <Container>
+      <Container mb={mb}>
           <Wrapper>
               {current > 1 && <Buttons lightmode={LightMode.lightMode} onClick={() => setOffset(offset - 20)}>
                 <LeftArrow lightmode={LightMode.lightMode}/>

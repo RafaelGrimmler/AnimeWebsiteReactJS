@@ -8,6 +8,7 @@ import Home from './Pages/Home'
 import Animes from './Pages/Animes'
 import Anime from './Pages/Anime'
 import Genres from './Pages/Genres'
+import Search from './Pages/Search'
 
 // Context
 import { LightModeProvider } from './Context/LightModeContext'
@@ -24,6 +25,7 @@ function App() {
           <Route path="/Animes" element={<Animes/>} />
           <Route path="/Anime/id=:id" element={<Anime/>} />
           <Route path="/Generos" element={<Genres/>} />
+          <Route path="/Buscar" element={<Search/>} />
         </Routes>
       </Router>
 
