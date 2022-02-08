@@ -42,7 +42,7 @@ export const RatingStar = styled(AiOutlineStar)`
 `;
 
 export const Incomplete = styled(MdOutlineDangerous)`
-    font-size: 18px;
+    font-size: 22px;
     color: #dbdbdb;
     margin-right: 5px;
 `;
@@ -74,12 +74,6 @@ export const InfoBar = styled.div`
         max-height: 56px;
         margin-bottom: 12px;
     }
-    
-    & span {
-        color: #dbdbdb;
-        font-size: 12.5px;
-        font-weight: bold;
-    }
 
     & div:nth-child(2) {
         position: relative;
@@ -90,28 +84,59 @@ export const InfoBar = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+`;
 
-        & div:nth-child(2) {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            width: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+export const Firstinformation = styled.span`
+    color: #dbdbdb;
+    font-size: 12.5px;
+    font-weight: bold;
+`;
 
-            & span {
-                color: var(--color-universal-header-text-animation);
-                filter: drop-shadow(0 0 1px black);
-            }
-        }
+export const Secondinformation = styled.div`
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    display: flex;
+    justify-content: center;
 
-        & div:nth-child(3) {
-            position: relative;
-            width: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    & div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & span {
+        color: var(--color-universal-header-text-animation);
+        font-size: 12.5px;
+        font-weight: bold;
+        filter: drop-shadow(0 0 1px black);
+    }
+`;
+
+export const Thirdinformation = styled.div`
+    position: relative;
+    width: auto;
+    top: ${props => props.cond ? '0%' : '50%'};
+    transform: ${props => props.cond ? 'translateY(0%)' : 'translateY(-50%)'};
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+    & div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+    
+    & span {
+        color: #dbdbdb;
+        font-size: 12.5px;
+        font-weight: bold;
     }
 `;

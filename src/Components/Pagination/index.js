@@ -11,8 +11,10 @@ function Pagination({ofs, count, mb}) {
   const [current, setCurrent] = useState(Math.ceil(offset/20) + 1)
   const LightMode = useLightMode()
   const pagesLength = Math.ceil(count / 20)
-  var first = pagesLength - current <= 1 ? pagesLength - 4 : Math.max(current - 2, 1)  
+  var first = pagesLength <= 4 ? 1 : pagesLength - current <= 1 ? pagesLength - 4 : Math.max(current - 2, 1)
  
+  // Math.max(current - 2, 1)
+
   useEffect(()=>{
     setCurrent(Math.ceil(offset/20) + 1)
   }, [offset])

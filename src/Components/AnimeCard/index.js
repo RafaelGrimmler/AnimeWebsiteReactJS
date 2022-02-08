@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Container, InfoBar, DopplerEffect, RatingStar, Incomplete, Complete } from './styles';
+import { Container, InfoBar, DopplerEffect, RatingStar, Incomplete, Complete, Firstinformation, Secondinformation, Thirdinformation } from './styles';
 
 
 function AnimeCard({ anime }) {
@@ -19,24 +19,28 @@ function AnimeCard({ anime }) {
             <h1>{anime.attributes.canonicalTitle}</h1>
             <div>
                 {anime.attributes.startDate &&
-                    <span>{anime.attributes.startDate.slice(0,4)}</span>
+                    <Firstinformation>{anime.attributes.startDate.slice(0,4)}</Firstinformation>
                 }
                 {anime.attributes.averageRating && (
-                    <div>
-                        <RatingStar/>
-                        <span>{(Math.round(parseFloat(anime.attributes.averageRating))/10).toFixed(1)}</span>
-                    </div>
+                    <Secondinformation>
+                        <div>
+                            <RatingStar/>
+                            <span>{(Math.round(parseFloat(anime.attributes.averageRating))/10).toFixed(1)}</span>
+                        </div>
+                    </Secondinformation>
                 )}
                 {anime.attributes.status && (
-                    <div>
-                        {anime.attributes.status === 'finished' ?
+                    <Thirdinformation cond={anime.attributes.averageRating}>
+                        <div>
+                            {anime.attributes.status === 'finished' ?
                             <Complete/> : <Incomplete/>
-                        }
-                        <span>
+                             }
+                             <span>
                             {anime.attributes.status === 'finished' ? 'Completo' : 'Em Andamento'
                             }
-                        </span>
-                    </div>
+                            </span>
+                        </div>
+                    </Thirdinformation>
                 )}
             </div>
         </InfoBar>
