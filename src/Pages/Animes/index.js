@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Narutolarge from '../../Images/Animes/Narutolarge.jpg'
 import Narutooriginal from '../../Images/Animes/Narutooriginal.jpg'
 
-import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon, AddIcon, AnimeList, LoadingContent, AnimeListWrapperContainer } from './styles';
+import { Container, LowerSubContainer, MainPresentationContent, GraphIcon, StatusUpIcon, StatusDownIcon, DetailsIcon, AnimeList, LoadingContent, AnimeListWrapperContainer } from './styles';
 
 // components
 import Header from '../../Components/Header'
@@ -40,8 +40,6 @@ function Animes() {
       setAnimes(response)
     })
   }, [offset])
-
-  console.log(animes)
 
   return (
     <Container>
@@ -82,13 +80,6 @@ function Animes() {
                     <div onClick={()=>navigator('/Anime/id=' + mainAnime[0].id)}>
                       <DetailsIcon lightmode={LightMode.lightMode}/>
                       <span>Detalhes</span>
-                    </div>
-                    : ''}
-                  </li>
-                  <li>{mainAnime ? 
-                    <div>
-                      <AddIcon lightmode={LightMode.lightMode}/>
-                      <span>Adicionar à lista</span>
                     </div>
                     : ''}
                   </li>

@@ -32,6 +32,12 @@ export const FormContainer = styled.div`
         margin-top: 60px;
         margin-bottom: 40px;
 
+        @media only screen and (max-width: 500px){
+            & {
+                width: 250px;
+            }
+        }
+
         & input {
             width: 100%;
             height: 100%;

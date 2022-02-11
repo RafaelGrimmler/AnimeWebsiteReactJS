@@ -17,17 +17,17 @@ function Genres() {
 
   const navigator = useNavigate()
   const LightMode = useLightMode()
-  const offset = 100
+  const limit = 100
 
   const [genres, setGenres] = useState({})
 
   useEffect(()=>{
-      fetch(`${API}genres?page[limit]=${offset}`)
+      fetch(`${API}genres?page[limit]=${limit}`)
       .then((response) => response.json())
       .then((response) => {
         setGenres(response)
       })
-  }, [offset])
+  }, [limit])
 
   return (
       <Container>
@@ -37,7 +37,7 @@ function Genres() {
             <GenresContainer lightmode={LightMode.lightMode}>
                 <ul>
                 {genres.data.map((genre)=>(
-                    <li key={genre.id}>
+                    <li key={genre.id} onClick={()=>navigator('/Generos/Genero=' + genre.attributes.name)}>
                         <span>
                             {genre.attributes.name}
                         </span>

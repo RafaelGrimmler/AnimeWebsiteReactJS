@@ -53,6 +53,7 @@ export const FirstBannerContent = styled.div`
   height: 500px;
   text-align: center;
   position: relative;
+  margin-top: 180px;
 
   & h1 {
     font-size: 50px;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { Container, Body, AnimeBackground, BackgroundAnimeImage, BackgroundShadowEffect, AnimeInfoContainer, LeftSideBar, InformationsBar, Details, RatingStar, Timer, Complete, Incomplete, SpanEditable, DescriptionBar, InteractiveBar, AddIcon, GenresBar } from './styles';
 
@@ -15,6 +15,7 @@ const API = 'https://kitsu.io/api/edge/'
 
 function Anime() {
 
+    const navigator = useNavigate()
     const LightMode = useLightMode()
     const { id } = useParams()
     const [anime, setAnime] = useState(0)
@@ -74,7 +75,7 @@ function Anime() {
                                     {animeGenres.map((animeGenres) => (
                                         <li key={animeGenres.id}>
                                             <div>
-                                                <span>
+                                                <span onClick={()=>navigator('/Generos/Genero=' + animeGenres.attributes.name)}>
                                                     {animeGenres.attributes.name}
                                                 </span>
                                             </div>

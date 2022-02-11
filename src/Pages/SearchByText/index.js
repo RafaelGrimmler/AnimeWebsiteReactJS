@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { Container, Body, FormContainer, SearchIcon, AnimesList, PaginationContainer } from './styles';
+import { Container, Body, AnimesList, PaginationContainer, SearchTitle } from './styles';
 
 // components
 import Header from '../../Components/Header'
@@ -16,19 +17,9 @@ const API = 'https://kitsu.io/api/edge/'
 function Search() {
 
     const LightMode = useLightMode()
-    const [text, setText] = useState('')
+    const { text } = useParams()
     const [animes, setAnimes] = useState(0)
     const [offset, setOffset] = useState(0)
-
-    const HandleForm = e => {
-        e.preventDefault()
-        setOffset(0)
-        fetch(`${API}anime?page[limit]=20&page[offset]=${offset}&filter[text]=${text}`)
-        .then((response) => response.json())
-        .then((response) => {
-            setAnimes(response)
-        })
-    }
 
     useEffect(()=>{
         fetch(`${API}anime?page[limit]=20&page[offset]=${offset}&filter[text]=${text}`)
@@ -36,20 +27,13 @@ function Search() {
         .then((response) => {
             setAnimes(response)
         })
-    }, [offset])
+    }, [offset, text])
 
     return (
       <Container>
-        <Header/>
+        <Header />
         <Body lightmode={LightMode.lightMode}>
-           <FormContainer lightmode={LightMode.lightMode}>
-                <form onSubmit={HandleForm}>
-                    <input type="text" placeholder='Animes...' name='animes/generos' value={text} onChange={e=>{setText(e.target.value)}}/>
-                    <button type='submit'>
-                        <SearchIcon lightmode={LightMode.lightMode}/>
-                    </button>
-                </form>
-           </FormContainer>
+            <SearchTitle>Pesquisa: '<h1>{text}</h1>'</SearchTitle>
            {animes.data && 
             <AnimesList>
                 <ul>

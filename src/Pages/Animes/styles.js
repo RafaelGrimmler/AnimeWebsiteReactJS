@@ -206,7 +206,7 @@ export const MainPresentationContent = styled.main`
         height: 100%;
         display: flex; 
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
 
         @media only screen and (max-width: 680px){
           & {

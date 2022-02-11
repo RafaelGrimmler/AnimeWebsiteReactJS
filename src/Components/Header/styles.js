@@ -18,8 +18,8 @@ export const Container = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-    width: 160px;
-    height: 35px;
+    width: 240px;
+    height: 100%;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -27,7 +27,6 @@ export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 50px;
    
     & h1 {
         font-size: 25px;
@@ -46,10 +45,11 @@ export const LogoContainer = styled.div`
     }
 
     @media only screen and (max-width: 870px){
-            & {
-                margin-left: 10px;
-            }
+        & {
+            margin-left: 10px;
+            justify-content: start;
         }
+    }
 `;
 
 export const SearchGlass = styled(FaSearch)`
@@ -107,7 +107,7 @@ export const ModeLight = styled(BsSun)`
 `;
 
 export const ButtonsContainer = styled.div`
-    width: 380px;
+    width: 240px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -129,7 +129,7 @@ export const ButtonsContainer = styled.div`
         align-items: center;
     }
 
-    & ul li:nth-child(5) {
+    & ul li:nth-child(3) {
         margin-right: 0px;
     }
 
@@ -161,8 +161,8 @@ export const ButtonsSpan = styled.span`
 `;
 
 export const RightContainer = styled.div`
-    margin-right: 50px;
     height: 100%;
+    width: 240px;
     display: flex;
     justify-content: center;
     align-items: center;

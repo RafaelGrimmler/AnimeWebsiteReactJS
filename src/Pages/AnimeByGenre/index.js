@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { Container, Body, FormContainer, SearchIcon, AnimesList, PaginationContainer } from './styles';
+import { Container, Body, AnimesList, PaginationContainer, GenreTitle } from './styles';
 
 // components
 import Header from '../../Components/Header'
@@ -16,40 +17,23 @@ const API = 'https://kitsu.io/api/edge/'
 function Search() {
 
     const LightMode = useLightMode()
-    const [text, setText] = useState('')
+    const { genre } = useParams()
     const [animes, setAnimes] = useState(0)
     const [offset, setOffset] = useState(0)
 
-    const HandleForm = e => {
-        e.preventDefault()
-        setOffset(0)
-        fetch(`${API}anime?page[limit]=20&page[offset]=${offset}&filter[text]=${text}`)
-        .then((response) => response.json())
-        .then((response) => {
-            setAnimes(response)
-        })
-    }
-
     useEffect(()=>{
-        fetch(`${API}anime?page[limit]=20&page[offset]=${offset}&filter[text]=${text}`)
+        fetch(`${API}anime?page[limit]=20&page[offset]=${offset}&filter[genres]=${genre}`)
         .then((response) => response.json())
         .then((response) => {
             setAnimes(response)
         })
-    }, [offset])
+    }, [offset, genre])
 
     return (
       <Container>
-        <Header/>
+        <Header btnEffect={'Generos'}/>
         <Body lightmode={LightMode.lightMode}>
-           <FormContainer lightmode={LightMode.lightMode}>
-                <form onSubmit={HandleForm}>
-                    <input type="text" placeholder='Animes...' name='animes/generos' value={text} onChange={e=>{setText(e.target.value)}}/>
-                    <button type='submit'>
-                        <SearchIcon lightmode={LightMode.lightMode}/>
-                    </button>
-                </form>
-           </FormContainer>
+            <GenreTitle lightmode={LightMode.lightMode}>Pesquisa: '<h1>{genre}</h1>'</GenreTitle>
            {animes.data && 
             <AnimesList>
                 <ul>

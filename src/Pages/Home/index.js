@@ -21,11 +21,11 @@ function Home() {
           <FirstBannerContent clicked={clicked}>
             <Divtest clicked={clicked}/>
             <h1>Catálogo de Animes</h1>
-            <p>Faça listas com seus animes preferidos</p>
+            <p>Encontre seus animes preferidos</p>
             <p>Descubra novos animes</p>
             <StartButton clicked={clicked} onClick={handleclick}>Começar</StartButton>
           </FirstBannerContent>
-          <PullAnimationBar/> 
+          <PullAnimationBar />
         </FirstBannerContainer>
       </Container>
   );
